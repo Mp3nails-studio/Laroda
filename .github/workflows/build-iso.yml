@@ -1,0 +1,67 @@
+name: Build La Rosa ISO
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Zwolnij miejsce na dysku runnera
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost
+          sudo docker image prune --all --force
+          df -h /
+
+      - name: Zbuduj ISO (Debian Trixie w kontenerze)
+        run: |
+          docker run --rm --privileged \
+            -v "$GITHUB_WORKSPACE":/build -w /build \
+            debian:trixie bash -euxc '
+              export DEBIAN_FRONTEND=noninteractive
+              apt-get update
+              apt-get install -y live-build debootstrap squashfs-tools xorriso \
+                isolinux syslinux-common syslinux-utils grub-pc-bin grub-efi-amd64-bin \
+                mtools dosfstools ca-certificates wget
+              chmod +x auto/* config/hooks/live/*
+              lb clean --purge || true
+              lb config
+              lb build
+            '
+
+      - name: Nazwa pliku i suma kontrolna
+        run: |
+          sudo chown -R "$USER" . || true
+          ISO=$(ls *.iso | head -n1)
+          mv "$ISO" "la-rosa-$(date +%Y%m%d)-amd64.iso"
+          sha256sum la-rosa-*.iso | tee la-rosa-SHA256SUMS
+          ls -lh la-rosa-*.iso
+
+      - name: Wyślij ISO jako artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: la-rosa-iso
+          path: |
+            la-rosa-*.iso
+            la-rosa-SHA256SUMS
+          retention-days: 14
+          compression-level: 0
+
+      - name: Zapisz log builda przy błędzie
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: |
+            build.log
+            chroot.packages.*
+          if-no-files-found: ignore
