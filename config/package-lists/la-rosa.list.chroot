@@ -25,6 +25,12 @@ curl
 wget
 nano
 
+# Sterowniki Wi‑Fi Broadcom (do przywrócenia po stabilnym buildzie)
+firmware-brcm80211
+b43-fwcutter
+firmware-b43-installer
+firmware-b43legacy-installer
+
 # Pakiety poniżej są wyłączone w tej wersji „agresywnej” dla maksymalnej stabilności builda.
 # Ich usunięcie zmniejsza liczbę konfliktów zależności i ryzyko błędu `lb chroot` na Debian Trixie.
 # firefox-esr
