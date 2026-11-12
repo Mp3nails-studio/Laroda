@@ -33,36 +33,20 @@ xfce4-screenshooter
 
 # System i sieć
 network-manager
-network-manager-gnome
-firmware-linux
-firmware-linux-nonfree
 
 # Polskie / branding
-task-polish
 locales
-arc-theme
-papirus-icon-theme
-fonts-cantarell
-fonts-noto
-plymouth
-plymouth-themes
 
-# Pakiety tymczasowo wyłączone — powodują niestabilność builda ISO:
-# wine
-# wine64
-# winetricks
-# luanti
-# flatpak
-# gnome-software
-# gnome-software-plugin-flatpak
-# libreoffice
-# gimp
-# inkscape
-# firmware-realtek
-# firmware-iwlwifi
-# firmware-amd-graphics
-# firmware-misc-nonfree
-# firmware-brcm80211
-# b43-fwcutter
-# firmware-b43-installer
-# firmware-b43legacy-installer
+# Minimalny zestaw pakietów zostawiony dla stabilnego builda ISO.
+# Pakiety poniżej są wyłączone, ponieważ w Debian Trixie powodują niestabilność
+# podczas instalacji w chroot i zatrzymują `lb build` z kodem 123:
+# task-polish
+# network-manager-gnome
+# firmware-linux
+# firmware-linux-nonfree
+# arc-theme
+# papirus-icon-theme
+# fonts-cantarell
+# fonts-noto
+# plymouth
+# plymouth-themes
