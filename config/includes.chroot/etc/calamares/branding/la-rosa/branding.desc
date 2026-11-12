@@ -1,0 +1,31 @@
+---
+componentName: la-rosa
+
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+
+windowExpanding: normal
+windowSize: 800px,520px
+
+strings:
+    productName:         "La Rosa"
+    shortProductName:    "La Rosa"
+    version:              "1.0"
+    shortVersion:         "1.0"
+    versionedName:        "La Rosa 1.0"
+    shortVersionedName:   "La Rosa 1.0"
+    bootloaderEntryName:  "La Rosa"
+    productUrl:           "https://la-rosa.local"
+    supportUrl:           "https://la-rosa.local"
+    releaseNotesUrl:      "https://la-rosa.local"
+
+images:
+    productLogo:         "logo.png"
+    productIcon:          "logo.png"
+    productWelcome:       "background.png"
+
+style:
+   sidebarBackground:    "#2a0710"
+   sidebarText:           "#f4c9db"
+   sidebarTextSelect:     "#ff5c8a"
+   sidebarTextHighlight:  "#3d0d1a"

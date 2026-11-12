@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -e
+
+WALLPAPER_DIR="/usr/share/backgrounds/la-rosa"
+
+# Ustawienie domyślnej tapety pulpitu dla XFCE (globalny plik konfiguracyjny)
+mkdir -p /etc/xdg/xfce4/xfconf/xfce-perchannel-xml
+
+cat > /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml << XMLEOF
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-desktop" version="1.0">
+  <property name="backdrop" type="empty">
+    <property name="screen0" type="empty">
+      <property name="monitor0" type="empty">
+        <property name="workspace0" type="empty">
+          <property name="last-image" type="string" value="${WALLPAPER_DIR}/la-rosa-wallpaper.png"/>
+          <property name="image-style" type="int" value="5"/>
+          <property name="color-style" type="int" value="0"/>
+        </property>
+      </property>
+      <property name="monitorVirtual1" type="empty">
+        <property name="workspace0" type="empty">
+          <property name="last-image" type="string" value="${WALLPAPER_DIR}/la-rosa-wallpaper.png"/>
+          <property name="image-style" type="int" value="5"/>
+        </property>
+      </property>
+    </property>
+  </property>
+</channel>
+XMLEOF
+
+# Rejestracja wszystkich wariantów tapet La Rosa w menu "Zmień tło pulpitu" (xfdesktop czyta ten format
+# analogicznie do gnome-background-properties - lista dostępnych tapet z podglądem)
+mkdir -p /usr/share/xfce4/backdrops
+ln -sf "${WALLPAPER_DIR}/la-rosa-wallpaper.png" /usr/share/xfce4/backdrops/la-rosa-wallpaper.png
+ln -sf "${WALLPAPER_DIR}/la-rosa-wallpaper-alt.png" /usr/share/xfce4/backdrops/la-rosa-wallpaper-alt.png
+ln -sf "${WALLPAPER_DIR}/la-rosa-wallpaper-login.png" /usr/share/xfce4/backdrops/la-rosa-wallpaper-login.png
+
+# Tło ekranu logowania (LightDM greeter) - wersja z samym logo na czystym czerwonym tle
+mkdir -p /etc/lightdm
+cat > /etc/lightdm/lightdm-gtk-greeter.conf << GREETEREOF
+[greeter]
+theme-name = Arc-Dark
+icon-theme-name = Papirus-Dark
+background = ${WALLPAPER_DIR}/la-rosa-wallpaper-login.png
+font-name = Cantarell 11
+GREETEREOF
+
+echo "La Rosa wallpapers configured: desktop (floral), login (logo), alt (floral+logo) available in backdrops."

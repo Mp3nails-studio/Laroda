@@ -1,0 +1,81 @@
+# Desktop - XFCE
+task-xfce-desktop
+xfce4
+xfce4-goodies
+xfce4-terminal
+lightdm
+lightdm-gtk-greeter
+lightdm-gtk-greeter-settings
+
+# Instalator graficzny
+calamares
+calamares-settings-debian
+
+# Sklep z aplikacjami
+gnome-software
+gnome-software-plugin-flatpak
+flatpak
+
+# Podstawowe narzędzia
+firefox-esr
+vlc
+libreoffice
+gimp
+inkscape
+htop
+neofetch
+curl
+wget
+git
+vim
+nano
+zip
+unzip
+p7zip-full
+
+# Użytkownik prosił o te konkretne
+wine
+wine64
+winetricks
+luanti
+
+# Multimedia i system
+pipewire
+wireplumber
+network-manager
+network-manager-gnome
+firmware-linux
+firmware-linux-nonfree
+firmware-realtek
+firmware-iwlwifi
+firmware-amd-graphics
+firmware-misc-nonfree
+
+# Broadcom Wi-Fi: b43 / b43legacy (starsze karty) + brcm80211 (brcmsmac/brcmfmac)
+b43-fwcutter
+firmware-b43-installer
+firmware-b43legacy-installer
+firmware-brcm80211
+
+# Polskie
+task-polish
+locales
+
+# Motywy i wygląd (do brandingu La Rosa - ciemny, bordowy)
+arc-theme
+papirus-icon-theme
+fonts-cantarell
+fonts-noto
+plymouth
+plymouth-themes
+
+# Inne przydatne narzędzia XFCE
+xarchiver
+ristretto
+mousepad
+gnome-disk-utility
+baobab
+evince
+file-roller
+xfce4-screenshooter
+xfce4-taskmanager

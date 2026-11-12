@@ -1,0 +1,10 @@
+PRETTY_NAME="La Rosa 1.0 (Trixie)"
+NAME="La Rosa"
+VERSION_ID="1.0"
+VERSION="1.0 (Trixie)"
+VERSION_CODENAME=trixie
+ID=la-rosa
+ID_LIKE=debian
+HOME_URL="https://la-rosa.local"
+SUPPORT_URL="https://la-rosa.local"
+BUG_REPORT_URL="https://la-rosa.local"

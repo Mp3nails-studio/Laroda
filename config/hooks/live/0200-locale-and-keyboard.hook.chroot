@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -e
+
+# Locale
+sed -i 's/# pl_PL.UTF-8 UTF-8/pl_PL.UTF-8 UTF-8/' /etc/locale.gen
+locale-gen
+update-locale LANG=pl_PL.UTF-8 LC_ALL=pl_PL.UTF-8
+
+# Timezone
+ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+echo "Europe/Warsaw" > /etc/timezone
+
+# Keyboard (konsola)
+echo 'XKBLAYOUT="pl"' > /etc/default/keyboard
+echo 'XKBVARIANT=""' >> /etc/default/keyboard
+echo 'BACKSPACE="guess"' >> /etc/default/keyboard
+
+# Keyboard dla XFCE (globalny xfconf)
+mkdir -p /etc/xdg/xfce4/xfconf/xfce-perchannel-xml
+cat > /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/keyboard-layout.xml << 'XMLEOF'
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="keyboard-layout" version="1.0">
+  <property name="Default" type="empty">
+    <property name="XkbDisable" type="bool" value="false"/>
+    <property name="XkbLayout" type="string" value="pl"/>
+  </property>
+</channel>
+XMLEOF
+
+echo "Locale, timezone and keyboard set to Polish / Warsaw."

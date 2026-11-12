@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+# Uruchamiaj neofetch przy każdym otwarciu interaktywnego terminala bash.
+# /etc/profile.d/ czytają tylko powłoki logowania, więc używamy /etc/bash.bashrc.
+cat >> /etc/bash.bashrc << 'BASHEOF'
+
+# La Rosa: neofetch z własnym ASCII-artem przy starcie terminala
+case $- in
+    *i*)
+        if command -v neofetch >/dev/null 2>&1; then
+            neofetch
+        fi
+        ;;
+esac
+BASHEOF
+
+echo "neofetch (La Rosa ASCII) set to run on every interactive bash start."

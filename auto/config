@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+lb config noauto \
+    --mode debian \
+    --distribution trixie \
+    --archive-areas "main contrib non-free non-free-firmware" \
+    --architectures amd64 \
+    --binary-images iso-hybrid \
+    --bootappend-live "boot=live components locales=pl_PL.UTF-8 keyboard-layouts=pl timezone=Europe/Warsaw" \
+    --debian-installer none \
+    --iso-application "La Rosa" \
+    --iso-publisher "La Rosa Project" \
+    --iso-volume "La Rosa Live" \
+    --memtest none \
+    --win32-loader false \
+    --firmware-binary true \
+    --firmware-chroot true \
+    --updates true \
+    --security true \
+    --backports false \
+    --apt-recommends true \
+    --apt-indices false \
+    --cache true \
+    --cache-indices true \
+    --cache-packages true \
+    --checksums sha256 \
+    --compression xz \
+    --clean \
+    "${@}"

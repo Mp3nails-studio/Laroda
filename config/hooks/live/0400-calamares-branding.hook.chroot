@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+CONF="/etc/calamares/settings.conf"
+
+if [ -f "$CONF" ]; then
+    # calamares-settings-debian domyślnie ustawia "branding: debian"
+    # podmieniamy na nasz własny motyw z /etc/calamares/branding/la-rosa/
+    sed -i 's/^branding:.*/branding: la-rosa/' "$CONF"
+    echo "Calamares branding switched to la-rosa."
+else
+    echo "WARNING: $CONF not found - calamares-settings-debian may not be installed correctly." >&2
+fi
