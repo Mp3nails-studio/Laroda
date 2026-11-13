@@ -12,6 +12,7 @@ calamares-settings-debian
 # Minimalny zestaw sieci i systemu
 debian-installer-launcher
 network-manager
+network-manager-gnome
 firmware-b43-installer
 locales
 
@@ -26,26 +27,26 @@ curl
 wget
 nano
 
-# Dodatkowe pakiety pulpitu i narzędzia
-firefox-esr
-vlc
-htop
-neofetch
-git
-vim
-zip
-unzip
-p7zip-full
-xarchiver
-ristretto
-xfce4-screenshooter
-task-polish
-network-manager-gnome
-firmware-linux
-firmware-linux-nonfree
-arc-theme
-papirus-icon-theme
-fonts-cantarell
-fonts-noto
-plymouth
-plymouth-themes
+# Pakiety poniżej są wyłączone w tej wersji „agresywnej” dla maksymalnej stabilności builda.
+# Ich usunięcie zmniejsza liczbę konfliktów zależności i ryzyko błędu `lb chroot` na Debian Trixie.
+# firefox-esr
+# vlc
+# htop
+# neofetch
+# git
+# vim
+# zip
+# unzip
+# p7zip-full
+# xarchiver
+# ristretto
+# xfce4-screenshooter
+# task-polish
+# firmware-linux
+# firmware-linux-nonfree
+# arc-theme
+# papirus-icon-theme
+# fonts-cantarell
+# fonts-noto
+# plymouth
+# plymouth-themes
