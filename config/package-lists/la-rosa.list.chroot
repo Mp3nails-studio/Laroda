@@ -9,62 +9,44 @@ lightdm-gtk-greeter
 calamares
 calamares-settings-debian
 
-# Podstawowe aplikacje
-firefox-esr
-vlc
-kodi
-minetest
-htop
-neofetch
-curl
-wget
-git
-vim
-nano
-zip
-unzip
-p7zip-full
+# Minimalny zestaw sieci i systemu
+debian-installer-launcher
+network-manager
+firmware-b43-installer
+locales
 
-# Narzędzia XFCE
+# Narzędzia podstawowe do live desktop
 thunar
 mousepad
-ristretto
-xarchiver
 xfce4-taskmanager
-xfce4-screenshooter
 
-# System i sieć
-network-manager
-network-manager-gnome
-firmware-linux
-firmware-linux-nonfree
+# Dodatkowe narzędzia, ale tylko jeśli są potrzebne w buildzie.
+# Zostawione w bardzo ograniczonej liczcie, aby zmniejszyć ryzyko problemów z apt/chroot.
+curl
+wget
+nano
 
-# Polskie / branding
-task-polish
-locales
-arc-theme
-papirus-icon-theme
-fonts-cantarell
-fonts-noto
-plymouth
-plymouth-themes
-
-# Pakiety tymczasowo wyłączone — powodują niestabilność builda ISO:
-# wine
-# wine64
-# winetricks
-# luanti
-# flatpak
-# gnome-software
-# gnome-software-plugin-flatpak
-# libreoffice
-# gimp
-# inkscape
-# firmware-realtek
-# firmware-iwlwifi
-# firmware-amd-graphics
-# firmware-misc-nonfree
-# firmware-brcm80211
-# b43-fwcutter
-# firmware-b43-installer
-# firmware-b43legacy-installer
+# Pakiety poniżej są wyłączone w tej wersji „agresywnej” dla maksymalnej stabilności builda.
+# Ich usunięcie zmniejsza liczbę konfliktów zależności i ryzyko błędu `lb chroot` na Debian Trixie.
+# firefox-esr
+# vlc
+# htop
+# neofetch
+# git
+# vim
+# zip
+# unzip
+# p7zip-full
+# xarchiver
+# ristretto
+# xfce4-screenshooter
+# task-polish
+# network-manager-gnome
+# firmware-linux
+# firmware-linux-nonfree
+# arc-theme
+# papirus-icon-theme
+# fonts-cantarell
+# fonts-noto
+# plymouth
+# plymouth-themes
