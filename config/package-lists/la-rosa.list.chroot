@@ -12,6 +12,8 @@ calamares-settings-debian
 # Podstawowe aplikacje
 firefox-esr
 vlc
+kodi
+minetest
 htop
 neofetch
 curl
